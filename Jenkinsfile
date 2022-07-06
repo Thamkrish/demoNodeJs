@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'node' } }
+    agent { docker { image 'node:16.13.1-alpine' } }
     stages {
         stage('build') {
             steps {
@@ -11,6 +11,7 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
+                sudo chown -R 114:121 "/.npm"
                 cd backend
                 npm install                     
                 """, returnStdout: true) 
