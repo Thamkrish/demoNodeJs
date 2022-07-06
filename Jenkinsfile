@@ -2,7 +2,7 @@ pipeline {
    agent any
     stages {
         stage('build') {
-             agent { dockerfile 'cicd/Dockerfile' }
+             agent { dockerfile 'cicd/package.Dockerfile' }
             steps {
                 sh 'node --version'
             }
