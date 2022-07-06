@@ -11,6 +11,7 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
+                cd backend
                 npm install                     
                 """, returnStdout: true) 
             }
