@@ -12,6 +12,7 @@ pipeline {
             steps{
                 sh(script: """
                 cd backend 
+                mkdir ~/.npm
                 chown -R 114:121 ~/.npm
                 npm install                     
                 """, returnStdout: true) 
