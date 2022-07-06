@@ -11,8 +11,8 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
-                chown -R 114:121 "/.npm"
                 cd backend
+                chown -R 114:121 "/.npm"
                 npm install                     
                 """, returnStdout: true) 
             }
