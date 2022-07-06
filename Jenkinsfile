@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'docker' } }
+    agent { docker { image 'ubuntu' } }
     stages {
         // stage('build') {
         //     steps {
@@ -11,6 +11,8 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
+                git clone https://github.com/Thamkrish/demoNodeJs.git
+                cd demoNodeJs
                 docker build backend/. -t test/node-web-app
                      
                 """, returnStdout: true) 
