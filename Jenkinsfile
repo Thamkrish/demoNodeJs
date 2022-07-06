@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker { image 'docker' } }
+    agent any
     stages {
         stage('build') {
             steps {
-                sh 'docker ps '
+                sh 'node --version'
             }
         }
 
@@ -11,9 +11,7 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
-
                 cd backend 
-                docker build . -t test
                 mkdir ~/.npm
                 chown -R 114:121 ~/.npm
                 npm install                     
