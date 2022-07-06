@@ -11,7 +11,9 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
+
                 cd backend 
+                docker build . -t test
                 mkdir ~/.npm
                 chown -R 114:121 ~/.npm
                 npm install                     
