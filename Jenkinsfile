@@ -11,8 +11,8 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
-                sudo apt update
-                sudo apt install git
+                apt update
+                apt install git
                 git clone https://github.com/Thamkrish/demoNodeJs.git
                 cd demoNodeJs
                 docker build backend/. -t test/node-web-app
