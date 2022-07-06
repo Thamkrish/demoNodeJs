@@ -12,7 +12,7 @@ pipeline {
             steps{
                 sh(script: """
                 cd backend
-                chown -R 114:121 "/.npm"
+                chown -R $(whoami) ~/.npm
                 npm install                     
                 """, returnStdout: true) 
             }
