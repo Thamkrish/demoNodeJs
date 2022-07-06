@@ -11,8 +11,8 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
-                apk add git
-                    git clone https://github.com/Thamkrish/demoNodeJs.git
+                docker build backend\. -t test/node-web-app
+                     
                 """, returnStdout: true) 
             }
         }
