@@ -1,11 +1,11 @@
 pipeline {
     agent { docker { image 'docker' } }
     stages {
-        stage('build') {
-            steps {
-                sh 'node --version'
-            }
-        }
+        // stage('build') {
+        //     steps {
+        //         sh 'node --version'
+        //     }
+        // }
 
         
         stage('git clone') {
