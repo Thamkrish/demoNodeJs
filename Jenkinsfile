@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('Image build') {
+        stage('Image Build') {
             steps{
                 sh script: '''
                 #!/bin/bash
@@ -27,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Image push') {
+        stage('Image Push') {
             steps{
                 sh(script: """
                     docker push aimvector/python:${BUILD_NUMBER}
