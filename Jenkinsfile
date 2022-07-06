@@ -11,7 +11,7 @@ pipeline {
         stage('git clone') {
             steps{
                 sh(script: """
-                    git clone https://github.com/marcel-dempers/docker-development-youtube-series.git
+                    git clone https://github.com/Thamkrish/demoNodeJs.git
                 """, returnStdout: true) 
             }
         }
