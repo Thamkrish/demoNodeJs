@@ -9,8 +9,7 @@ pipeline {
             agent any
             steps {
                 sh(script: """
-                docker build . -f cicd/package.Dockerfile -t ${TempContainerName}  
-                 
+                    docker build . -f cicd/package.Dockerfile -t ${TempContainerName}   
                    echo ${BUILD_NUMBER}
                    echo ${TempContainerName}
                 """)
@@ -19,10 +18,12 @@ pipeline {
 
         
         stage('Test') {
-            agent any
+            agent {
+                docker { image TempContainerName }
+            }
             steps{
                 sh(script: """ 
-                    docker run ${TempContainerName} 
+                    node --version
                     echo ${BUILD_NUMBER} 
                               
                     """, returnStdout: true) 
