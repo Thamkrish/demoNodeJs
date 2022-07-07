@@ -1,5 +1,8 @@
 pipeline {
    agent any
+   environment {
+        TempContainerName = nodedemo:${BUILD_NUMBER}
+    }
     stages {
         stage('Package') {
             agent { dockerfile { filename 'cicd/package.Dockerfile'} }
@@ -7,16 +10,18 @@ pipeline {
                 sh(script: """
                     node --version
                    echo ${BUILD_NUMBER}
+                   echo ${TempContainerName}
                 """)
             }
         }
 
         
         stage('Test') {
+            agent any
             steps{
                 sh(script: """ 
-                npm install                     
-                """, returnStdout: true) 
+                    echo ${BUILD_NUMBER}                  
+                        """, returnStdout: true) 
             }
         }
 
