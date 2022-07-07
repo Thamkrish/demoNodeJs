@@ -31,8 +31,7 @@ pipeline {
             steps{
                 sh script: '''
                 #!/bin/bash
-                 docker build . -f cicd/package.Dockerfile -t ${TempContainerName}      
-                docker build . --network host -t aimvector/python:${BUILD_NUMBER}
+                 docker build . -f cicd/package.Dockerfile -t ${TempContainerName}  
                 '''
             }
         }
@@ -40,7 +39,7 @@ pipeline {
         stage('Image Push') {
             steps{
                 sh(script: """
-                    docker push aimvector/python:${BUILD_NUMBER}
+                    echo ${BUILD_NUMBER} 
                 """)
             }
         }
