@@ -22,7 +22,7 @@ pipeline {
             agent any
             steps{
                 sh(script: """ 
-                    docker run ${TempContainerName} --name testcontainer${BUILD_NUMBER}
+                    docker run ${TempContainerName} 
                     echo ${BUILD_NUMBER} 
                               
                     """, returnStdout: true) 
