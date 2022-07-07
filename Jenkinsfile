@@ -1,7 +1,7 @@
 pipeline {
    agent any
    environment {
-        TempContainerName = nodedemo:${BUILD_NUMBER}
+        TempContainerName = "nodedemo:${BUILD_NUMBER}"
     }
     stages {
         stage('Package') {
@@ -21,7 +21,7 @@ pipeline {
             steps{
                 sh(script: """ 
                     echo ${BUILD_NUMBER}                  
-                        """, returnStdout: true) 
+                    """, returnStdout: true) 
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
             steps{
                 sh script: '''
                 #!/bin/bash
-                cd $WORKSPACE/docker-development-youtube-series/python
+                
                 docker build . --network host -t aimvector/python:${BUILD_NUMBER}
                 '''
             }
