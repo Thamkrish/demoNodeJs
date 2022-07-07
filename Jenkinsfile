@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh(script: """
                 docker build . -f cicd/package.Dockerfile -t ${TempContainerName}  
-                    node --version
+                 
                    echo ${BUILD_NUMBER}
                    echo ${TempContainerName}
                 """)
