@@ -5,7 +5,7 @@ pipeline {
             agent { dockerfile { filename 'cicd/package.Dockerfile'} }
             steps {
                 sh(script: """
-                    node --v
+                    node --version
                    echo ${BUILD_NUMBER}
                 """)
             }
