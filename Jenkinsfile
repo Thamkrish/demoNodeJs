@@ -23,6 +23,7 @@ pipeline {
             }
             steps{
                 sh(script: """ 
+                    npm -v
                     npm test
                     node --version
                     echo ${BUILD_NUMBER} 
