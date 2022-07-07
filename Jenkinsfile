@@ -20,7 +20,8 @@ pipeline {
             agent any
             steps{
                 sh(script: """ 
-                    echo ${BUILD_NUMBER}                  
+                    echo ${BUILD_NUMBER} 
+                    docker build cicd/package.Dockerfile -t ${TempContainerName}                 
                     """, returnStdout: true) 
             }
         }
