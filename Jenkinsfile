@@ -37,7 +37,8 @@ pipeline {
             steps{
                 sh script: '''
                 #!/bin/bash
-                 docker build . -f cicd/package.Dockerfile -t ${TempContainerName}  
+                echo 1
+                 #docker build . -f cicd/package.Dockerfile -t ${TempContainerName}  
                 '''
             }
         }
