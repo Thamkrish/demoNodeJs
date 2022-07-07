@@ -21,16 +21,17 @@ pipeline {
             steps{
                 sh(script: """ 
                     echo ${BUILD_NUMBER} 
-                    docker build cicd/package.Dockerfile -t ${TempContainerName}                 
+                              
                     """, returnStdout: true) 
             }
         }
 
         stage('Image Build') {
+             agent any
             steps{
                 sh script: '''
                 #!/bin/bash
-                
+                 docker build . -f cicd/package.Dockerfile -t ${TempContainerName}      
                 docker build . --network host -t aimvector/python:${BUILD_NUMBER}
                 '''
             }
