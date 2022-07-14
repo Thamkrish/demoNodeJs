@@ -7,11 +7,12 @@ pipeline {
         stage('Package') {
              agent any 
             steps {
+                sh './cicd/pipeline/package.sh'
                    
-                sh(script: """ 
-                    chmod +x -R ${env.WORKSPACE}
-                    cicd/pipeline/package.sh 
-                    """, returnStdout: true) 
+                // sh(script: """ 
+                //     chmod +x -R ${env.WORKSPACE}
+                //     cicd/pipeline/package.sh 
+                //     """, returnStdout: true) 
         
 
               
