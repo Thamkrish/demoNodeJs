@@ -13,16 +13,17 @@ pipeline {
 
         
         stage('Test') {
-            agent {
-                docker { image "test${TempContainerName}" }
-            }
+              agent any 
+            // agent {
+            //     docker { image "test${TempContainerName}" }
+            // }
             steps{
                 sh(script: """ 
                    # npm -v
                    # npm test
-                   ls
+                   docker run --rm test${TempContainerName}
 
-                   mocha backend/test/testSce1.js --reporter spec
+                #mocha backend/test/testSce1.js --reporter spec
                     node --version
                     echo ${BUILD_NUMBER} 
                               
