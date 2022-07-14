@@ -15,4 +15,4 @@ RUN npm update && \
     npm install -g mocha
 
 # Override the command, to run the test instead of the application
-CMD ["mocha", "test/testSec.js", "--reporter", "spec"]
+CMD ["mocha", "test/testSec1.js", "--reporter", "spec"]
