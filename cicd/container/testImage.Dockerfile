@@ -2,7 +2,8 @@
 ARG FROM=slim
 
 FROM $FROM
-WORKDIR /usr/src/app
+RUN pwd
+RUN ls
 
 # Copy the test files
 # COPY tests tests
