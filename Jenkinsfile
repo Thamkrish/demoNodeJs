@@ -7,6 +7,7 @@ pipeline {
         stage('Package') {
              agent any 
             steps {
+                sh 'whoami'
                 sh './cicd/pipeline/package.sh'
                    
                 // sh(script: """ 
