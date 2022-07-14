@@ -7,28 +7,20 @@ pipeline {
         stage('Package') {
              agent any 
             steps {
-                sh 'whoami'
                 sh './cicd/pipeline/package.sh'
-                   
-                // sh(script: """ 
-                //     chmod +x -R ${env.WORKSPACE}
-                //     cicd/pipeline/package.sh 
-                //     """, returnStdout: true) 
-        
-
-              
             }
         }
 
         
         stage('Test') {
             agent {
-                docker { image TempContainerName }
+                docker { image "test${TempContainerName}" }
             }
             steps{
                 sh(script: """ 
                    # npm -v
                    # npm test
+                   docker run --rm
                     node --version
                     echo ${BUILD_NUMBER} 
                               
