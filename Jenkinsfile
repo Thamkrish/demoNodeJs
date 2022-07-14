@@ -6,14 +6,8 @@ pipeline {
     stages {
         stage('Package') {
              agent any
-            steps {
-                sh(script: """
-                    docker build . -f cicd/package.Dockerfile -t ${TempContainerName}   
-                   echo ${BUILD_NUMBER}
-                   echo ${TempContainerName}
-                   cicd/pipeline/package.sh
-                """)
-            }
+             sh ./cicd/pipeline/package.sh
+          
         }
 
         
