@@ -5,12 +5,13 @@ pipeline {
     }
     stages {
         stage('Package') {
-             agent { dockerfile { filename 'cicd/container/packageBase.Dockerfile'} }
+             agent any
             steps {
                 sh(script: """
                     docker build . -f cicd/package.Dockerfile -t ${TempContainerName}   
                    echo ${BUILD_NUMBER}
                    echo ${TempContainerName}
+                   cicd/pipeline/package.sh
                 """)
             }
         }
