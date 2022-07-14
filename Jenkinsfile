@@ -20,7 +20,7 @@ pipeline {
                 sh(script: """ 
                    # npm -v
                    # npm test
-                   docker run --rm
+                   mocha test/testSec.js --reporter spec
                     node --version
                     echo ${BUILD_NUMBER} 
                               
