@@ -5,9 +5,10 @@ pipeline {
     }
     stages {
         stage('Package') {
-             agent any
-             sh ./cicd/pipeline/package.sh
-          
+             agent any 
+            steps {
+                sh cicd\pipeline\\package.sh 
+            }
         }
 
         
