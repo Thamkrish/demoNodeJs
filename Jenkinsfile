@@ -7,7 +7,7 @@ pipeline {
         stage('Package') {
              agent any 
             steps {
-                sh cicd\pipeline\\package.sh 
+                sh cicd\\pipeline\\package.sh 
             }
         }
 
