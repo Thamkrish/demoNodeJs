@@ -1,4 +1,6 @@
 # Use the production image as base image
+ARG FROM=slim
+
 FROM $FROM
 
 # Copy the test files
