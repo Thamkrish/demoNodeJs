@@ -2,6 +2,7 @@
 ARG FROM=slim
 
 FROM $FROM
+WORKDIR /usr/src/app
 
 # Copy the test files
 # COPY tests tests
