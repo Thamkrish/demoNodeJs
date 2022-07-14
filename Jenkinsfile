@@ -20,6 +20,8 @@ pipeline {
                 sh(script: """ 
                    # npm -v
                    # npm test
+                   ls
+                   
                    mocha test/testSce1.js --reporter spec
                     node --version
                     echo ${BUILD_NUMBER} 
