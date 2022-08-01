@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
         stage('Package') {
-             agent any 
+            agent any 
             steps {
                 sh './cicd/pipeline/package.sh'
             }
@@ -23,9 +23,7 @@ pipeline {
                    # npm test
                    docker run --rm test${TempContainerName}
 
-                #mocha backend/test/testSce1.js --reporter spec
-                    node --version
-                    echo ${BUILD_NUMBER} 
+                
                               
                     """, returnStdout: true) 
             }

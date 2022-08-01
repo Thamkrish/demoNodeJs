@@ -1,0 +1,66 @@
+---
+version: 2
+plan:
+  project-key: DCUB
+  key: SAMPPSVC
+  name: Sample Service
+stages:
+  - Pre-Build Test:
+    - Pre-Build Test
+  - Build:
+    - Build
+  - Unit Test:
+    - Unit Test
+  - Pre-Deploy Integration Testing:
+    - Pre-Deploy Integration Testing
+  - Pre-Deploy Load Testing:
+    - Pre-Deploy Load Testing
+  - Publish Deployable:
+    - Publish Deployable
+  
+Pre-Build Test:
+  tasks:
+    - script: 
+      - STAGE="pre-build-test"
+      - &run_script |
+        if [ -f "./pipeline-helpers/$STAGE.sh" ]
+        then
+          ./pipeline-helpers/$STAGE.sh
+        else
+          echo "Skipping task due to missing helper script"
+        fi
+      - &get_results |
+        if [ -f "./$STAGE.out" ]
+        then
+          echo "create PR comment"
+          echo "create Slack comment"
+          cat $STAGE.out
+        fi
+Build:
+  tasks:
+    - script:
+      - STAGE="build"
+      - *run_script
+Unit Test:
+  tasks:
+    - script:
+      - STAGE="unit-test"
+      - *run_script
+      - *get_results
+Pre-Deploy Integration Testing:
+  tasks:
+    - script:
+      - STAGE="pre-deploy-integration-test"
+      - *run_script
+      - *get_results
+Pre-Deploy Load Testing:
+  tasks:
+    - script:
+      - STAGE="pre-deploy-load-test"
+      - *run_script
+      - *get_results
+Publish Deployable:
+  tasks:
+    - script:
+      - STAGE="publish-deployable"
+      - *run_script

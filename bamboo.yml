@@ -1,0 +1,10 @@
+---
+!include 'common-build-plan.yaml'
+---
+
+version: 2
+plan: DCUB-SAMPSVC
+plan-permissions:
+  - groups: dcube-eng-team
+    permissions: admin
+
